@@ -2,10 +2,12 @@
 pragma solidity ^0.8.24;
 
 import {Script} from "forge-std/Script.sol";
-import {Counter} from "../src/Counter.sol";
+import {Solution} from "../src/Counter.sol";
+import {Token} from "../src/ERC20Mintable.sol";
 
 contract CounterScript is Script {
-    Counter public counter;
+    Token public counter;
+    Solution public solution;
     uint256 private deployerKey = vm.envUint("PRIVATE_KEY");
 
     function setUp() public {}
@@ -13,7 +15,7 @@ contract CounterScript is Script {
     function run() public {
         vm.startBroadcast(deployerKey);
 
-        counter = new Counter();
+        solution = new Solution();
 
         vm.stopBroadcast();
     }
